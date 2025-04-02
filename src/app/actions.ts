@@ -6,6 +6,10 @@ export const trendsFromReddit = async () => {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'
         }
       })
+      if (!response.ok) {
+        console.log('Reddit:response',response)
+        throw new Error('Failed to fetch trends')
+      }
       const data = await response.json()
       console.log('Reddit:response.data',data)
       return data.data
